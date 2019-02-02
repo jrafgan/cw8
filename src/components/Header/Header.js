@@ -30,21 +30,15 @@ export default class Header extends React.Component {
             <header>
                 <Navbar color="dark" dark expand="md">
                     <Container>
-                        <NavbarBrand href="/">My Blog</NavbarBrand>
+                        <NavbarBrand href="/">Quote Central</NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/" exact>Home</NavLink>
+                                    <NavLink tag={RRNavLink} to="/" exact>Quotes</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/posts/add">Add Post</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink tag={RRNavLink} to="/about">About</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink tag={RRNavLink} to="/contact">Contacts</NavLink>
+                                    <NavLink tag={RRNavLink} to="/posts/add">Submit New Quote</NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>

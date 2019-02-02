@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from '../../axios-instances';
 import { Jumbotron, Button } from 'reactstrap';
 
-class FullPost extends Component {
+class FullQuote extends Component {
     state = {
         id: null,
         post: null,
@@ -10,19 +10,19 @@ class FullPost extends Component {
 
     componentDidMount() {
         this.setState({id: this.props.match.params.id });
-        axios.get('posts/' + this.props.match.params.id + '.json').then(response => {
+        axios.get('quotes/' + this.props.match.params.id + '.json').then(response => {
             this.setState({post: response.data});
         });
     };
 
     editHandler = id => {
         console.log(id);
-        this.props.history.push('/posts/' + id + '/edit');
+        this.props.history.push('/quotes/' + id + '/edit');
     };
 
     deleteHandler = id => {
         if (window.confirm('Do you really want to remove this post ?')) {
-            axios.delete('posts/' + id + '.json').then(()=>{
+            axios.delete('quotes/' + id + '.json').then(()=>{
                 alert('Пост удален !');
                 this.props.history.replace('/');
             });
@@ -35,9 +35,9 @@ class FullPost extends Component {
         return (
             <div className={"item-" + this.state.id}>
                 <Jumbotron>
-                    <h2 className="display-3">{this.state.post.title}</h2>
+                    <h2 className="display-3">{this.state.post.author}</h2>
                     <hr className="my-2" />
-                    <p className="lead">{this.state.post.description}</p>
+                    <p className="lead">{this.state.post.quote}</p>
 
 
                 </Jumbotron>
@@ -50,4 +50,4 @@ class FullPost extends Component {
     }
 }
 
-export default FullPost;
+export default FullQuote;
