@@ -4,7 +4,7 @@ import axios from '../../axios-instances';
 
 class AddQuote extends Component {
     addQuote = post => {
-        axios.post('quotes.json', post).then(()=>{
+        axios.quote('quotes.json', post).then(()=>{
             this.props.history.replace('/');
         })
     };

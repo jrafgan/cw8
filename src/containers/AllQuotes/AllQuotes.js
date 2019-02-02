@@ -1,7 +1,6 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import ShortQuote from "../../components/Quote/ShortQuote";
 import axios from '../../axios-instances';
-import {CATEGORIES} from "../../Categories";
 import './AllQuotes.css'
 import NavLink from "react-router-dom/es/NavLink";
 
@@ -33,6 +32,7 @@ class AllQuotes extends Component {
 
                 <ShortQuote
                     key={item.id}
+                    category={item.category}
                     author={item.author}
                     quote={item.quote}
                     readClicked={() => this.readHandler(item.id)}
@@ -46,13 +46,12 @@ class AllQuotes extends Component {
                 <div className='leftBar'>
                     <ul>
                         <p>All</p>
-                        <li><NavLink onClick={this.readHandler} to='/star_wars'>Star Wars</NavLink></li>
-                        <li><NavLink onClick={this.readHandler} to='/famous_people'>Famous People</NavLink></li>
-                        <li><NavLink onClick={this.readHandler} to='/saying'>Saying</NavLink></li>
-                        <li><NavLink onClick={this.readHandler} to='/humor'>Humor</NavLink></li>
-                        <li><NavLink onClick={this.readHandler} to='/motivational'>Motivational</NavLink></li>
+                        {this.state.quotes.map((item, index)=>{
+                            return <li key={index}><NavLink onClick={this.readHandler} to={'/quotes/' + item.id + '&' + item.category + '&' + item.author + '&' + item.quote}>{item.category}</NavLink></li>
+                        })}
                     </ul>
                 </div>
+
                 <div className="quotes_list">
                     {quotes}
                 </div>

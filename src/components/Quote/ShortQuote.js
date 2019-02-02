@@ -1,8 +1,10 @@
 import React from 'react';
-import { Card, Button, CardTitle, CardText} from 'reactstrap';
+import {Card, CardTitle, CardText, Button} from 'reactstrap';
+// import Buttons from "../Buttons/Buttons";
+import NavLink from "react-router-dom/es/NavLink";
 
 const ShortQuote = props => {
-
+    console.log(props);
     return (
 
         <Card body>
@@ -11,8 +13,8 @@ const ShortQuote = props => {
             <CardTitle>{props.author}</CardTitle>
 
             <p className="lead float-right">
-                <Button color="primary" onClick={() => this.editHandler(this.state.id)}>Edit Post</Button>
-                <Button color="danger" onClick={() => this.deleteHandler(this.state.id)}>Delete Post</Button>
+                <NavLink to='/quotes/:id/edit'><Button color="primary">Edit Post</Button></NavLink>
+                <NavLink to='/quotes/:id/edit'><Button color="danger">Delete Post</Button></NavLink>
             </p>
         </Card>
     );

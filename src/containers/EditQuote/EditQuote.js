@@ -12,15 +12,15 @@ class EditQuote extends Component {
         const id = this.props.match.params.id;
         if (id) {
             axios.get('quotes/' + id + '.json').then(response => {
-                this.setState({id, post: response.data});
+                this.setState({id, quote: response.data});
             });
         }
     };
 
-    editPost = post => {
+    editQuote = post => {
         axios.put('quotes/' + this.props.match.params.id + '.json', post).then(response => {
             this.props.history.push('/');
-            this.setState({post: response.data});
+            this.setState({quote: response.data});
         });
         console.log('EDIT MODE', post);
     };
@@ -30,7 +30,7 @@ class EditQuote extends Component {
         return (
             <Fragment>
                 <h1>Edit Post</h1>
-                <QuoteForm data={postInfo} submit={this.editPost} />
+                <QuoteForm data={postInfo} submit={this.editQuote} />
             </Fragment>
         );
     };
